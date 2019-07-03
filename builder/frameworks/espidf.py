@@ -217,8 +217,8 @@ def build_protocomm_lib(sdk_params):
     for d in src_dirs:
         src_filter += " +<%s>" % d
 
-    if is_set("CONFIG_BT_ENABLED", sdk_params) and is_set(
-            "CONFIG_BLUEDROID_ENABLED", sdk_params):
+    if not (is_set("CONFIG_BT_ENABLED", sdk_params) and is_set(
+            "CONFIG_BLUEDROID_ENABLED", sdk_params)):
         src_filter += " -<src/simple_ble/simple_ble.c>"
         src_filter += " -<src/transports/protocomm_ble.c>"
 
